@@ -1,5 +1,6 @@
 package com.medirandevu.auth.controller;
 
+import com.medirandevu.auth.config.GlobalExceptionHandler;
 import com.medirandevu.auth.dto.LoginRequest;
 import com.medirandevu.auth.dto.LoginResult;
 import com.medirandevu.auth.dto.RegisterRequest;

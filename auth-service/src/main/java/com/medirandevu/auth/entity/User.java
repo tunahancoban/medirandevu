@@ -22,13 +22,16 @@ public class User {
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
+    // Stored as text ("PATIENT"), not ordinal, so reordering the enum can't corrupt data.
     @Enumerated(EnumType.STRING)
     @Column(nullable=false)
     private Role role;
 
+    // Disabled users cannot log in. @Builder.Default keeps the default when using User.builder().
     @Builder.Default
     private boolean enabled = true;
 
+    // Filled by the database (DEFAULT NOW() in V1__create_users.sql); JPA never writes it.
     @Column(name = "created_at", insertable = false , updatable = false)
     private LocalDateTime createdAt;
 }
